@@ -8,13 +8,18 @@
 
 import UIKit
 
+class RedditPostCell: UITableViewCell {
+    @IBOutlet weak var subredditLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    var postURL: String!
+}
+
 class MainTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-         self.clearsSelectionOnViewWillAppear = false
         
+        tableView.register(UINib.init(nibName: "SubredditFilterHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "subredditFilterHeaderView")
         //TODO: kick off data load
     }
 
@@ -25,23 +30,44 @@ class MainTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 20
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "redditPostCell", for: indexPath)
+        
+        if let redditCell = cell as? RedditPostCell {
+            redditCell.titleLabel.text = "Title Label"
+            redditCell.subredditLabel.text = "r/subreddit"
+            redditCell.postURL = "https://www.reddit.com/r/jokes"
+        }
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "subredditFilterHeaderView")
+        
+        if let filterHeader = header as? SubredditFilterHeaderView {
+            filterHeader.searchBar.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
+        }
+        
+        return header
+    }
+    
+    @objc func textFieldDidChange(textField: UITextField){
+        
+        print("Text changed")
+        
     }
 
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        guard let destination = segue.destination as? RedditWebViewController else { return; }
+        guard let destination = segue.destination as? RedditWebViewController else { return }
+        guard let cell = sender as? RedditPostCell else { return }
         
-        destination.targetUrl = "https://www.reddit.com/r/jokes"
-        // Pass the selected object to the new view controller.
+        destination.targetUrl = cell.postURL
     }
 }

@@ -10,40 +10,55 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main Table View Controller-->
+        <!--Reddit Viewer-->
         <scene sceneID="rDq-vc-hvJ">
             <objects>
                 <tableViewController id="oAS-hZ-fVD" customClass="MainTableViewController" customModule="reddit_viewer" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="LBC-GC-YdG">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="46" sectionFooterHeight="28" id="LBC-GC-YdG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="redditPostCell" id="Q56-Dc-Dl4">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="redditPostCell" id="Q56-Dc-Dl4" customClass="RedditPostCell" customModule="reddit_viewer" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q56-Dc-Dl4" id="RL6-Xy-wLB">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Subreddit Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7um-Tq-qBd">
-                                            <rect key="frame" x="16" y="0.0" width="125" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subreddit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7um-Tq-qBd" userLabel="Subreddit Label">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="14.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="text" value=""/>
+                                            </userDefinedRuntimeAttributes>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Post Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Af1-eI-uQf">
-                                            <rect key="frame" x="16" y="22" width="84" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Post" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Af1-eI-uQf">
+                                            <rect key="frame" x="16" y="15.5" width="343" height="24"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="text" value=""/>
+                                            </userDefinedRuntimeAttributes>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="Af1-eI-uQf" secondAttribute="bottom" constant="4" id="1Ri-dt-RVN"/>
+                                        <constraint firstItem="7um-Tq-qBd" firstAttribute="top" secondItem="RL6-Xy-wLB" secondAttribute="top" id="5m3-86-TNA"/>
+                                        <constraint firstItem="Af1-eI-uQf" firstAttribute="leading" secondItem="7um-Tq-qBd" secondAttribute="leading" id="E4t-Ph-6Fx"/>
+                                        <constraint firstItem="7um-Tq-qBd" firstAttribute="leading" secondItem="RL6-Xy-wLB" secondAttribute="leading" constant="16" id="Rif-4e-cgb"/>
+                                        <constraint firstItem="Af1-eI-uQf" firstAttribute="trailing" secondItem="7um-Tq-qBd" secondAttribute="trailing" id="VX9-WL-xS5"/>
+                                        <constraint firstAttribute="trailing" secondItem="7um-Tq-qBd" secondAttribute="trailing" constant="16" id="f8T-2o-rTH"/>
+                                        <constraint firstItem="Af1-eI-uQf" firstAttribute="top" secondItem="7um-Tq-qBd" secondAttribute="bottom" constant="1" id="pDa-PS-mxW"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <gestureRecognizers/>
                                 <connections>
+                                    <outlet property="subredditLabel" destination="7um-Tq-qBd" id="nzx-39-b2o"/>
+                                    <outlet property="titleLabel" destination="Af1-eI-uQf" id="P6O-tX-S36"/>
                                     <segue destination="gG7-KA-vCm" kind="show" id="Pnh-AW-0f3"/>
                                 </connections>
                             </tableViewCell>
@@ -53,12 +68,14 @@
                             <outlet property="delegate" destination="oAS-hZ-fVD" id="C07-cm-oUH"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="nM1-YB-kOq"/>
+                    <navigationItem key="navigationItem" title="Reddit Viewer" id="nM1-YB-kOq">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="ogd-oF-fn0"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7le-01-32t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
-        <!--Reddit Web View Controller-->
+        <!--Post-->
         <scene sceneID="Y0l-iD-jdN">
             <objects>
                 <viewController id="gG7-KA-vCm" customClass="RedditWebViewController" customModule="reddit_viewer" customModuleProvider="target" sceneMemberID="viewController">
@@ -84,13 +101,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wFD-3f-hsR"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Post" id="v69-S4-2Lg"/>
                     <connections>
                         <outlet property="webView" destination="hGk-Rk-XGM" id="5VK-op-2sw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kq9-He-SLi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1412" y="27"/>
+            <point key="canvasLocation" x="1492" y="27"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="He4-Jj-Rrp">
@@ -106,7 +124,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RsN-Fh-SOX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-898" y="27"/>
+            <point key="canvasLocation" x="-111" y="27"/>
         </scene>
     </scenes>
 </document>
