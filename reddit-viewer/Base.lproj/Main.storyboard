@@ -14,13 +14,18 @@
         <scene sceneID="rDq-vc-hvJ">
             <objects>
                 <tableViewController id="oAS-hZ-fVD" customClass="MainTableViewController" customModule="reddit_viewer" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="46" sectionFooterHeight="28" id="LBC-GC-YdG">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="LBC-GC-YdG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="EGd-9f-dzG">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="redditPostCell" id="Q56-Dc-Dl4" customClass="RedditPostCell" customModule="reddit_viewer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q56-Dc-Dl4" id="RL6-Xy-wLB">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -71,9 +76,13 @@
                     <navigationItem key="navigationItem" title="Reddit Viewer" id="nM1-YB-kOq">
                         <barButtonItem key="backBarButtonItem" title="Back" id="ogd-oF-fn0"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchBar" destination="EGd-9f-dzG" id="290-hS-ZiV"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7le-01-32t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="686" y="27"/>
         </scene>
         <!--Post-->
         <scene sceneID="Y0l-iD-jdN">

@@ -15,8 +15,6 @@
 		0632A1B5221F91F200F70897 /* reddit_viewerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0632A1B4221F91F200F70897 /* reddit_viewerUITests.swift */; };
 		0632A1C3221F94A000F70897 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0632A1C2221F94A000F70897 /* MainTableViewController.swift */; };
 		0632A1C5221F99A400F70897 /* RedditWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0632A1C4221F99A400F70897 /* RedditWebViewController.swift */; };
-		0632A1C7221FAA4800F70897 /* SubredditFilterHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0632A1C6221FAA4800F70897 /* SubredditFilterHeaderView.swift */; };
-		0632A1C9221FABF400F70897 /* SubredditFilterHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0632A1C8221FABF400F70897 /* SubredditFilterHeaderView.xib */; };
 		0632A1CB221FB8F400F70897 /* RedditDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0632A1CA221FB8F400F70897 /* RedditDataFetcher.swift */; };
 		0632A1CD2221C60B00F70897 /* RedditDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0632A1CC2221C60B00F70897 /* RedditDataModel.swift */; };
 		381FCD7F5DE1EED05C44F788 /* Pods_reddit_viewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E54E40B562F6EE1C2F8A8E9 /* Pods_reddit_viewer.framework */; };
@@ -56,8 +54,6 @@
 		0632A1B6221F91F200F70897 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0632A1C2221F94A000F70897 /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
 		0632A1C4221F99A400F70897 /* RedditWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditWebViewController.swift; sourceTree = "<group>"; };
-		0632A1C6221FAA4800F70897 /* SubredditFilterHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubredditFilterHeaderView.swift; sourceTree = "<group>"; };
-		0632A1C8221FABF400F70897 /* SubredditFilterHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubredditFilterHeaderView.xib; sourceTree = "<group>"; };
 		0632A1CA221FB8F400F70897 /* RedditDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditDataFetcher.swift; sourceTree = "<group>"; };
 		0632A1CC2221C60B00F70897 /* RedditDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditDataModel.swift; sourceTree = "<group>"; };
 		19519E572E0BA36A734A317F /* Pods-reddit-viewerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reddit-viewerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-reddit-viewerUITests/Pods-reddit-viewerUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -131,8 +127,6 @@
 				0632A19B221F91F200F70897 /* Assets.xcassets */,
 				0632A19D221F91F200F70897 /* LaunchScreen.storyboard */,
 				0632A1A0221F91F200F70897 /* Info.plist */,
-				0632A1C6221FAA4800F70897 /* SubredditFilterHeaderView.swift */,
-				0632A1C8221FABF400F70897 /* SubredditFilterHeaderView.xib */,
 				0632A1CA221FB8F400F70897 /* RedditDataFetcher.swift */,
 				0632A1CC2221C60B00F70897 /* RedditDataModel.swift */,
 			);
@@ -291,7 +285,6 @@
 			files = (
 				0632A19F221F91F200F70897 /* LaunchScreen.storyboard in Resources */,
 				0632A19C221F91F200F70897 /* Assets.xcassets in Resources */,
-				0632A1C9221FABF400F70897 /* SubredditFilterHeaderView.xib in Resources */,
 				0632A19A221F91EF00F70897 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -444,7 +437,6 @@
 				0632A1CD2221C60B00F70897 /* RedditDataModel.swift in Sources */,
 				0632A1C3221F94A000F70897 /* MainTableViewController.swift in Sources */,
 				0632A195221F91EF00F70897 /* AppDelegate.swift in Sources */,
-				0632A1C7221FAA4800F70897 /* SubredditFilterHeaderView.swift in Sources */,
 				0632A1C5221F99A400F70897 /* RedditWebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxCocoa
 import RxSwift
 
 class RedditPostCell: UITableViewCell {
@@ -17,18 +18,34 @@ class RedditPostCell: UITableViewCell {
 
 class MainTableViewController: UITableViewController {
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     private var redditData: Array<RedditData> = []
+    private let dataFetcher = RedditDataFetcher()
+    private let disposeBag = DisposeBag()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        tableView.register(UINib.init(nibName: "SubredditFilterHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "subredditFilterHeaderView")
-        //TODO: kick off data load
-        
-        _ = RedditDataFetcher.init().fetchJSon().observeOn(MainScheduler.instance).subscribe(onNext: { data in
+    fileprivate func fetchData(_ query: String? = nil) {
+         _ = dataFetcher.fetchJSon()
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { data in
             self.redditData = data
             self.tableView.reloadData()
         })
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        fetchData()
+        
+        searchBar
+            .rx.text
+            .orEmpty
+            .debounce(0.5, scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .subscribe(onNext: {[unowned self] query in
+            self.fetchData(query)
+        }).disposed(by: disposeBag)
     }
 
     // MARK: - Table view data source
@@ -53,22 +70,6 @@ class MainTableViewController: UITableViewController {
         }
 
         return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "subredditFilterHeaderView")
-        
-        if let filterHeader = header as? SubredditFilterHeaderView {
-            filterHeader.searchBar.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
-        }
-        
-        return header
-    }
-    
-    @objc func textFieldDidChange(textField: UITextField){
-        
-        print("Text changed")
-        
     }
 
     // MARK: - Navigation
