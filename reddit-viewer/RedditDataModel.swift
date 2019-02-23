@@ -9,24 +9,19 @@
 import Foundation
 
 struct RedditListing : Codable {
-    struct ListingData : Codable {
-        struct Post : Codable {
-            struct PostData : Codable {
-                let title: String
-                let subreddit_name_prefixed: String
-                let url: String
-            }
-            let kind: String
-            let data: PostData
-        }
-        let modhash: String
-        let dist: Int
-        let children: [Post]
-        let after: String
-        let before: String?
-    }
-    
-    let kind: String
     let data: ListingData
-    
+}
+
+struct ListingData : Codable {
+    let children: [Post]
+}
+
+struct Post : Codable {
+    let data: PostData
+}
+
+struct PostData : Codable {
+    let title: String
+    let subreddit_name_prefixed: String
+    let url: String
 }
