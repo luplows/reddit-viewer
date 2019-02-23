@@ -20,7 +20,7 @@ class RedditDataFetcher: NSObject {
     
     public func fetchJSon(_ subreddit: String = "") -> Observable<Array<RedditData>> {
         
-        let urlString = String.init(format: "https://reddit.com/%@.json", subreddit.lowercased())
+        let urlString = getUrlFor(subreddit)
         
         return Observable.create({ observer in
             let req = URLRequest.init(url: URL.init(string: urlString)!)
@@ -47,5 +47,12 @@ class RedditDataFetcher: NSObject {
         } catch {
             return []
         }
+    }
+    
+    fileprivate func getUrlFor(_ subreddit: String) -> String {
+        if !subreddit.isEmpty && !subreddit.lowercased().starts(with: "r/") {
+            return String.init(format: "https://reddit.com/r/%@.json", subreddit.lowercased())
+        }
+        return String.init(format: "https://reddit.com/%@.json", subreddit.lowercased())
     }
 }
