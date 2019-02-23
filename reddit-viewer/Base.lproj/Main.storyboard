@@ -18,21 +18,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="EGd-9f-dzG">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="r/example" id="EGd-9f-dzG">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="redditPostCell" id="Q56-Dc-Dl4" customClass="RedditPostCell" customModule="reddit_viewer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="redditPostCell" rowHeight="56" id="Q56-Dc-Dl4" customClass="RedditPostCell" customModule="reddit_viewer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="84" width="375" height="56"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q56-Dc-Dl4" id="RL6-Xy-wLB">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="55.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subreddit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7um-Tq-qBd" userLabel="Subreddit Label">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="14.5"/>
+                                            <rect key="frame" x="16" y="8" width="343" height="14.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -40,8 +40,8 @@
                                                 <userDefinedRuntimeAttribute type="string" keyPath="text" value=""/>
                                             </userDefinedRuntimeAttributes>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Post" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Af1-eI-uQf">
-                                            <rect key="frame" x="16" y="15.5" width="343" height="24"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Post" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Af1-eI-uQf">
+                                            <rect key="frame" x="16" y="23.5" width="343" height="24"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -51,8 +51,8 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="Af1-eI-uQf" secondAttribute="bottom" constant="4" id="1Ri-dt-RVN"/>
-                                        <constraint firstItem="7um-Tq-qBd" firstAttribute="top" secondItem="RL6-Xy-wLB" secondAttribute="top" id="5m3-86-TNA"/>
+                                        <constraint firstAttribute="bottom" secondItem="Af1-eI-uQf" secondAttribute="bottom" constant="8" id="1Ri-dt-RVN"/>
+                                        <constraint firstItem="7um-Tq-qBd" firstAttribute="top" secondItem="RL6-Xy-wLB" secondAttribute="top" constant="8" id="5m3-86-TNA"/>
                                         <constraint firstItem="Af1-eI-uQf" firstAttribute="leading" secondItem="7um-Tq-qBd" secondAttribute="leading" id="E4t-Ph-6Fx"/>
                                         <constraint firstItem="7um-Tq-qBd" firstAttribute="leading" secondItem="RL6-Xy-wLB" secondAttribute="leading" constant="16" id="Rif-4e-cgb"/>
                                         <constraint firstItem="Af1-eI-uQf" firstAttribute="trailing" secondItem="7um-Tq-qBd" secondAttribute="trailing" id="VX9-WL-xS5"/>
