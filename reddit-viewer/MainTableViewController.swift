@@ -23,14 +23,16 @@ class MainTableViewController: UITableViewController {
     private var redditData: Array<RedditData> = []
     private let dataFetcher = RedditDataFetcher()
     private let disposeBag = DisposeBag()
-
-    fileprivate func fetchData(_ query: String? = nil) {
-         _ = dataFetcher.fetchJSon()
+    
+    fileprivate func fetchData(_ query: String = "") {
+        _ = dataFetcher.fetchJSon(query)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { data in
-            self.redditData = data
-            self.tableView.reloadData()
-        })
+                if data.count != 0 {
+                    self.redditData = data
+                    self.tableView.reloadData()
+                }
+            })
     }
     
     override func viewDidLoad() {
@@ -44,20 +46,20 @@ class MainTableViewController: UITableViewController {
             .debounce(0.5, scheduler: MainScheduler.instance)
             .distinctUntilChanged()
             .subscribe(onNext: {[unowned self] query in
-            self.fetchData(query)
-        }).disposed(by: disposeBag)
+                self.fetchData(query)
+            }).disposed(by: disposeBag)
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return redditData.count
     }
-
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "redditPostCell", for: indexPath)
@@ -68,12 +70,12 @@ class MainTableViewController: UITableViewController {
             redditCell.subredditLabel.text = data.subreddit
             redditCell.postURL = data.url
         }
-
+        
         return cell
     }
-
+    
     // MARK: - Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let destination = segue.destination as? RedditWebViewController else { return }
         guard let cell = sender as? RedditPostCell else { return }

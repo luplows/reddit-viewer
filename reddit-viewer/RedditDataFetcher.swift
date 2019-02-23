@@ -18,25 +18,21 @@ struct RedditData {
 
 class RedditDataFetcher: NSObject {
     
-    public func fetchJSon(subreddit: String? = nil) -> Observable<Array<RedditData>> {
+    public func fetchJSon(_ subreddit: String = "") -> Observable<Array<RedditData>> {
+        
+        let urlString = String.init(format: "https://reddit.com/%@.json", subreddit.lowercased())
         
         return Observable.create({ observer in
-            let req = URLRequest.init(url: URL.init(string: "http://reddit.com/.json")!)
+            let req = URLRequest.init(url: URL.init(string: urlString)!)
             
             let responseJSON = URLSession.shared.rx.json(request: req)
             
-            let cancel = Disposables.create {
-                //todo: cancel request
-            }
-            
-            _ = responseJSON
+            return responseJSON
                 .subscribe(onNext: { json in
                     let Posts = self.parseJson(json: json)
                     observer.on(.next(Posts))
                 })
-            
-            return cancel
-            })
+        })
     }
     
     private func parseJson(json: Any) -> Array<RedditData> {
