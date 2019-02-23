@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class RedditPostCell: UITableViewCell {
     @IBOutlet weak var subredditLabel: UILabel!
@@ -15,12 +16,19 @@ class RedditPostCell: UITableViewCell {
 }
 
 class MainTableViewController: UITableViewController {
+    
+    private var redditData: Array<RedditData> = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.register(UINib.init(nibName: "SubredditFilterHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "subredditFilterHeaderView")
         //TODO: kick off data load
+        
+        _ = RedditDataFetcher.init().fetchJSon().observeOn(MainScheduler.instance).subscribe(onNext: { data in
+            self.redditData = data
+            self.tableView.reloadData()
+        })
     }
 
     // MARK: - Table view data source
@@ -30,7 +38,7 @@ class MainTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return redditData.count
     }
 
     
@@ -38,9 +46,10 @@ class MainTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "redditPostCell", for: indexPath)
         
         if let redditCell = cell as? RedditPostCell {
-            redditCell.titleLabel.text = "Title Label"
-            redditCell.subredditLabel.text = "r/subreddit"
-            redditCell.postURL = "https://www.reddit.com/r/jokes"
+            let data = redditData[indexPath.row]
+            redditCell.titleLabel.text = data.title
+            redditCell.subredditLabel.text = data.subreddit
+            redditCell.postURL = data.url
         }
 
         return cell
